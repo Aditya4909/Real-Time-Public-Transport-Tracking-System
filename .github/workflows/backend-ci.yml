@@ -20,10 +20,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Build with Maven
+    - name: Build and Test with Maven
       working-directory: ./transittrack-backend
-      run: mvn clean package -DskipTests
-
-    - name: Run Spring Boot Tests (H2 Dev Profile)
-      working-directory: ./transittrack-backend
-      run: mvn test
+      run: mvn clean verify
