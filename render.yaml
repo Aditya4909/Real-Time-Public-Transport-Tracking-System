@@ -1,5 +1,18 @@
 services:
   - type: web
+    name: transittrack-backend
+    env: docker
+    rootDir: transittrack-backend
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: dev
+
+  - type: web
     name: bus-tracker-backend
     env: node
     plan: free
@@ -14,15 +27,3 @@ services:
         value: your-super-secret-jwt-key-for-production
       - key: ALLOWED_ORIGINS
         value: https://realtime-bus-tracker.netlify.app
-
-  - type: web
-    name: transittrack-spring-backend
-    env: docker
-    dockerfilePath: ./transittrack-backend/Dockerfile
-    dockerContext: ./transittrack-backend
-    plan: free
-    envVars:
-      - key: PORT
-        value: 8080
-      - key: SPRING_PROFILES_ACTIVE
-        value: dev
