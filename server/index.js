@@ -39,13 +39,14 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', uptime: process.uptime() });
 });
 
-// Root route for basic status (prevents 'Cannot GET /')
+// Root route for basic status
 app.get('/', (req, res) => {
   res.json({
-    name: 'Real-Time Bus Tracking API',
-    status: 'running',
-    uptime: process.uptime(),
-    docs: '/health'
+    name: 'TransitTrack – Real-Time Public Transport Tracking System',
+    status: 'online',
+    javaBackend: 'TransitTrack Java 21 Spring Boot backend is located in /transittrack-backend',
+    swaggerDocs: '/swagger-ui.html (on Spring Boot backend)',
+    uptime: process.uptime()
   });
 });
 
